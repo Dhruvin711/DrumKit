@@ -1,26 +1,27 @@
-
 // FOR BUTTON PRESS
-for(var i=0; i < document.querySelectorAll(".drum").length; i++)
-{
+for (var i = 0; i < document.querySelectorAll(".drum").length; i++) {
   document.querySelectorAll(".drum")[i].addEventListener("click", handleClick);
 
   function handleClick() {
     makeSound(this.innerHTML);
+
+    btnAnimation(this.innerHTML);
   }
 }
 
 // FOR KEY PRESS
 document.addEventListener("keypress", handlekey);
 
-  function handlekey(event) {
-    makeSound(event.key);
-  }
+function handlekey(event) {
+  makeSound(event.key);
+
+  btnAnimation(event.key);
+}
 
 
 function makeSound(key) {
 
-  switch (key)
-  {
+  switch (key) {
     case "a":
       var audio1 = new Audio("sounds/tom-3.mp3");
       audio1.play();
@@ -57,5 +58,19 @@ function makeSound(key) {
       break;
 
 
+  }
+}
+
+
+// For Animation
+function btnAnimation(currentKey) {
+  var activeBtn = document.querySelector("." + currentKey);
+
+  activeBtn.classList.add("pressed");
+
+  setTimeout(btnTimeout, 110); 
+
+  function btnTimeout() {
+    activeBtn.classList.remove("pressed");
   }
 }

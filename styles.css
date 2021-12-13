@@ -32,11 +32,6 @@ body {
   background-color: white;
 }
 
-.drum:hover {
-  width: 145px;
-  height: 145px;
-}
-
 .set {
   margin: 50px auto 10px auto;
 }
